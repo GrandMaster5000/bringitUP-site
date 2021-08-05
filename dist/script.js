@@ -978,6 +978,8 @@ function () {
   _createClass(Slider, [{
     key: "showSlides",
     value: function showSlides(n) {
+      var _this = this;
+
       if (n > this.slides.length) {
         this.slideIndex = 1;
       }
@@ -989,6 +991,16 @@ function () {
       this.slides.forEach(function (slide) {
         slide.style.display = 'none';
       });
+
+      try {
+        if (this.slideIndex == 3) {
+          this.hanson.style.display = 'none';
+          setTimeout(function () {
+            _this.hanson.style.display = 'block';
+          }, 3000);
+        }
+      } catch (e) {}
+
       this.slides[this.slideIndex - 1].style.display = 'block';
     }
   }, {
@@ -999,17 +1011,21 @@ function () {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
+
+      try {
+        this.hanson = document.querySelector('.hanson');
+      } catch (e) {}
 
       this.btns.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          _this.pluseSlides(1);
+          _this2.pluseSlides(1);
         });
         btn.parentNode.previousElementSibling.addEventListener('click', function (e) {
           e.preventDefault();
-          _this.slideIndex = 1;
+          _this2.slideIndex = 1;
 
-          _this.showSlides(_this.slideIndex);
+          _this2.showSlides(_this2.slideIndex);
         });
       });
       this.showSlides(this.slideIndex);

@@ -20,6 +20,17 @@ export default class Slider {
             slide.style.display = 'none';
         });
 
+        try {
+            if(this.slideIndex == 3) {
+    
+                this.hanson.style.display = 'none';
+    
+                setTimeout(() => {
+                    this.hanson.style.display = 'block';
+                }, 3000);
+            } 
+        } catch(e) {}
+
         this.slides[this.slideIndex - 1].style.display = 'block';
     }
 
@@ -28,6 +39,10 @@ export default class Slider {
     }
 
     render() {
+        try {
+            this.hanson = document.querySelector('.hanson');
+        } catch(e) {}
+
        this.btns.forEach(btn => {
           btn.addEventListener('click', () => {
              this.pluseSlides(1);
