@@ -3,7 +3,9 @@ import MainSlider from './modules/slider/slider-main';
 import VideoPlayer from './modules/playVideo';
 import MiniSlider from './modules/slider/slider-mini';
 import Differnce from './modules/difference';
-
+import Forms from './modules/form/form';
+import CheckInputCyrilic from './modules/form/checkInputCyrilic';
+import NumberMask from './modules/form/numberMask';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({
@@ -47,4 +49,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const player = new VideoPlayer('.showup .play', '.overlay');
     player.init();
+
+    const forms = new Forms('form');
+    forms.init();
+
+    const emailInputsChecked = new CheckInputCyrilic('input[type="email"]');
+    emailInputsChecked.check();
+
+    const numberMask = new NumberMask('input[name="phone"]');
+    numberMask.init();
 });
