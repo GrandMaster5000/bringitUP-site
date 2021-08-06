@@ -2763,6 +2763,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_slider_slider_main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/slider/slider-main */ "./src/js/modules/slider/slider-main.js");
 /* harmony import */ var _modules_playVideo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/playVideo */ "./src/js/modules/playVideo.js");
 /* harmony import */ var _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider/slider-mini */ "./src/js/modules/slider/slider-mini.js");
+/* harmony import */ var _modules_difference__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/difference */ "./src/js/modules/difference.js");
+
 
 
 
@@ -2798,9 +2800,87 @@ window.addEventListener('DOMContentLoaded', function () {
     activeClass: 'feed__item-active'
   });
   feedSlider.init();
+  var differenceTenAgo = new _modules_difference__WEBPACK_IMPORTED_MODULE_3__["default"]('.officerold', '.officer__card-item', '.plus');
+  differenceTenAgo.init();
+  var differenceToday = new _modules_difference__WEBPACK_IMPORTED_MODULE_3__["default"]('.officernew', '.officer__card-item', '.plus');
+  differenceToday.init();
   var player = new _modules_playVideo__WEBPACK_IMPORTED_MODULE_1__["default"]('.showup .play', '.overlay');
   player.init();
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/difference.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/difference.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Differnce; });
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Differnce =
+/*#__PURE__*/
+function () {
+  function Differnce(container, items, trigger) {
+    _classCallCheck(this, Differnce);
+
+    this.container = document.querySelector(container);
+    this.items = this.container.querySelectorAll(items);
+    this.trigger = this.container.querySelector(trigger);
+  }
+
+  _createClass(Differnce, [{
+    key: "showItem",
+    value: function showItem() {
+      var _this = this;
+
+      var _loop = function _loop(i) {
+        if (_this.items[i].contains(_this.trigger)) {
+          var counter = 0;
+
+          _this.trigger.addEventListener('click', function () {
+            _this.items[counter].classList.add('animate__animated', 'animate__fadeIn');
+
+            _this.items[counter].style.display = 'flex';
+
+            if (_this.items[counter] == _this.items[_this.items.length - 2]) {
+              _this.items[i].classList.add('animate__animated', 'animate__fadeOut');
+            }
+
+            if (_this.items[counter] != _this.items[i]) {
+              counter++;
+            }
+          });
+        } else {
+          _this.items[i].style.display = 'none';
+        }
+      };
+
+      for (var i = 0; i <= this.items.length - 1; i++) {
+        _loop(i);
+      }
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      this.showItem();
+    }
+  }]);
+
+  return Differnce;
+}();
+
+
 
 /***/ }),
 
