@@ -1,6 +1,5 @@
 'use strict';
 import MainSlider from "./slider-main";
-
 export default class MainPrevNext extends MainSlider{
     constructor (prev, next) {
         super();

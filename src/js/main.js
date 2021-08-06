@@ -59,6 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const player = new VideoPlayer('.showup .play', '.overlay');
     player.init();
+    const playerModulePage = new VideoPlayer('.module__video-item .play', '.overlay');
+    playerModulePage.init();
 
     const forms = new Forms('form');
     forms.init();
