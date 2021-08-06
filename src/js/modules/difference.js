@@ -2,9 +2,11 @@
 
 export default class Differnce {
     constructor(container, items, trigger) {
-        this.container = document.querySelector(container);
-        this.items = this.container.querySelectorAll(items);
-        this.trigger = this.container.querySelector(trigger);
+        try {
+            this.container = document.querySelector(container);
+            this.items = this.container.querySelectorAll(items);
+            this.trigger = this.container.querySelector(trigger);
+        } catch(e) {}
     }
 
     showItem() {
@@ -32,6 +34,8 @@ export default class Differnce {
     }
 
     init() {
-        this.showItem();
+        try {
+            this.showItem();
+        } catch(e){}
     }
 }

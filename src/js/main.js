@@ -6,6 +6,7 @@ import Differnce from './modules/difference';
 import Forms from './modules/form/form';
 import CheckInputCyrilic from './modules/form/checkInputCyrilic';
 import NumberMask from './modules/form/numberMask';
+import MainPrevNext from './modules/slider/slider-mainPrevNext';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({
@@ -13,6 +14,15 @@ window.addEventListener('DOMContentLoaded', () => {
         container: '.page'
     });
     slider.render();
+
+    const sliderModules = new MainSlider({
+        btns: '.next',
+        container: '.moduleapp'
+    });
+    sliderModules.render();
+
+    const prevNext = new MainPrevNext('.prevmodule', '.nextmodule', '.moduleapp');
+    prevNext.init();
 
     const showUpSlider = new MiniSlider({
         container: '.showup__content-slider',

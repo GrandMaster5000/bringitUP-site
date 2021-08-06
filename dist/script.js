@@ -5019,6 +5019,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_form_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/form/form */ "./src/js/modules/form/form.js");
 /* harmony import */ var _modules_form_checkInputCyrilic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/form/checkInputCyrilic */ "./src/js/modules/form/checkInputCyrilic.js");
 /* harmony import */ var _modules_form_numberMask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/form/numberMask */ "./src/js/modules/form/numberMask.js");
+/* harmony import */ var _modules_slider_slider_mainPrevNext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/slider/slider-mainPrevNext */ "./src/js/modules/slider/slider-mainPrevNext.js");
+
 
 
 
@@ -5034,6 +5036,13 @@ window.addEventListener('DOMContentLoaded', function () {
     container: '.page'
   });
   slider.render();
+  var sliderModules = new _modules_slider_slider_main__WEBPACK_IMPORTED_MODULE_0__["default"]({
+    btns: '.next',
+    container: '.moduleapp'
+  });
+  sliderModules.render();
+  var prevNext = new _modules_slider_slider_mainPrevNext__WEBPACK_IMPORTED_MODULE_7__["default"]('.prevmodule', '.nextmodule', '.moduleapp');
+  prevNext.init();
   var showUpSlider = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_2__["default"]({
     container: '.showup__content-slider',
     prev: '.showup__prev',
@@ -5098,9 +5107,11 @@ function () {
   function Differnce(container, items, trigger) {
     _classCallCheck(this, Differnce);
 
-    this.container = document.querySelector(container);
-    this.items = this.container.querySelectorAll(items);
-    this.trigger = this.container.querySelector(trigger);
+    try {
+      this.container = document.querySelector(container);
+      this.items = this.container.querySelectorAll(items);
+      this.trigger = this.container.querySelector(trigger);
+    } catch (e) {}
   }
 
   _createClass(Differnce, [{
@@ -5137,7 +5148,9 @@ function () {
   }, {
     key: "init",
     value: function init() {
-      this.showItem();
+      try {
+        this.showItem();
+      } catch (e) {}
     }
   }]);
 
@@ -5577,7 +5590,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-
+ // import MainPrevNext from './slider-mainPrevNext';
 
 var MainSlider =
 /*#__PURE__*/
@@ -5628,27 +5641,139 @@ function (_Slider) {
     value: function render() {
       var _this2 = this;
 
-      try {
-        this.hanson = document.querySelector('.hanson');
-      } catch (e) {}
+      if (this.container) {
+        try {
+          this.hanson = document.querySelector('.hanson');
+        } catch (e) {}
 
-      this.btns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          _this2.pluseSlides(1);
-        });
-        btn.parentNode.previousElementSibling.addEventListener('click', function (e) {
-          e.preventDefault();
-          _this2.slideIndex = 1;
+        this.btns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            _this2.pluseSlides(1);
+          });
+          btn.parentNode.previousElementSibling.addEventListener('click', function (e) {
+            e.preventDefault();
+            _this2.slideIndex = 1;
 
-          _this2.showSlides(_this2.slideIndex);
+            _this2.showSlides(_this2.slideIndex);
+          });
         });
-      });
-      this.showSlides(this.slideIndex);
+        this.showSlides(this.slideIndex);
+      }
     }
   }]);
 
   return MainSlider;
 }(_slider__WEBPACK_IMPORTED_MODULE_9__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./src/js/modules/slider/slider-mainPrevNext.js":
+/*!******************************************************!*\
+  !*** ./src/js/modules/slider/slider-mainPrevNext.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MainPrevNext; });
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_object_get_prototype_of__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.get-prototype-of */ "./node_modules/core-js/modules/es.object.get-prototype-of.js");
+/* harmony import */ var core_js_modules_es_object_get_prototype_of__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_prototype_of__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _slider_main__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./slider-main */ "./src/js/modules/slider/slider-main.js");
+
+
+
+
+
+
+
+
+
+
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var MainPrevNext =
+/*#__PURE__*/
+function (_MainSlider) {
+  _inherits(MainPrevNext, _MainSlider);
+
+  function MainPrevNext(prev, next) {
+    var _this;
+
+    _classCallCheck(this, MainPrevNext);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainPrevNext).call(this));
+    _this.prev = prev;
+    _this.next = next;
+    return _this;
+  }
+
+  _createClass(MainPrevNext, [{
+    key: "init",
+    value: function init() {
+      var _this2 = this;
+
+      if (this.container) {
+        document.querySelectorAll(this.prev).forEach(function (item) {
+          item.addEventListener('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            _this2.pluseSlides(-1);
+          });
+        });
+        document.querySelectorAll(this.next).forEach(function (item) {
+          item.addEventListener('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            _this2.pluseSlides(1);
+          });
+        });
+      }
+    }
+  }]);
+
+  return MainPrevNext;
+}(_slider_main__WEBPACK_IMPORTED_MODULE_9__["default"]);
 
 
 
@@ -5785,25 +5910,27 @@ function (_Slider) {
     value: function init() {
       var _this3 = this;
 
-      this.container.style.cssText = "\n            display: flex;\n            flex-wrap: wrap;\n            overflow: hidden;\n            align-items: flex-start;\n        ";
-      this.bindTriggers();
-      this.decorizeSlides();
+      try {
+        this.container.style.cssText = "\n            display: flex;\n            flex-wrap: wrap;\n            overflow: hidden;\n            align-items: flex-start;\n            ";
+        this.bindTriggers();
+        this.decorizeSlides();
 
-      if (this.autoplay) {
-        var autoplayInterval = setInterval(function () {
-          return _this3.next.click();
-        }, 5000);
-        [this.prev, this.next].forEach(function (btn) {
-          btn.addEventListener('pointerover', function () {
-            clearInterval(autoplayInterval);
+        if (this.autoplay) {
+          var autoplayInterval = setInterval(function () {
+            return _this3.next.click();
+          }, 5000);
+          [this.prev, this.next].forEach(function (btn) {
+            btn.addEventListener('pointerover', function () {
+              clearInterval(autoplayInterval);
+            });
+            btn.addEventListener('pointerout', function () {
+              autoplayInterval = setInterval(function () {
+                return _this3.next.click();
+              }, 5000);
+            });
           });
-          btn.addEventListener('pointerout', function () {
-            autoplayInterval = setInterval(function () {
-              return _this3.next.click();
-            }, 5000);
-          });
-        });
-      }
+        }
+      } catch (e) {}
     }
   }]);
 
@@ -5846,7 +5973,11 @@ var Slider = function Slider() {
   _classCallCheck(this, Slider);
 
   this.container = document.querySelector(container);
-  this.slides = this.container.children;
+
+  try {
+    this.slides = this.container.children;
+  } catch (e) {}
+
   this.btns = document.querySelectorAll(btns);
   this.prev = document.querySelector(prev);
   this.next = document.querySelector(next);
