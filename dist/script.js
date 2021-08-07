@@ -5082,6 +5082,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_form_checkInputCyrilic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/form/checkInputCyrilic */ "./src/js/modules/form/checkInputCyrilic.js");
 /* harmony import */ var _modules_form_numberMask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/form/numberMask */ "./src/js/modules/form/numberMask.js");
 /* harmony import */ var _modules_slider_slider_mainPrevNext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/slider/slider-mainPrevNext */ "./src/js/modules/slider/slider-mainPrevNext.js");
+/* harmony import */ var _modules_showInfo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/showInfo */ "./src/js/modules/showInfo.js");
+
 
 
 
@@ -5143,6 +5145,8 @@ window.addEventListener('DOMContentLoaded', function () {
   emailInputsChecked.check();
   var numberMask = new _modules_form_numberMask__WEBPACK_IMPORTED_MODULE_6__["default"]('input[name="phone"]');
   numberMask.init();
+  var showInfo = new _modules_showInfo__WEBPACK_IMPORTED_MODULE_8__["default"]('.module__info-show');
+  showInfo.triggersInit();
 });
 
 /***/ }),
@@ -5639,6 +5643,60 @@ function () {
   }]);
 
   return VideoPlayer;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/modules/showInfo.js":
+/*!************************************!*\
+  !*** ./src/js/modules/showInfo.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ShowInfo; });
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ShowInfo =
+/*#__PURE__*/
+function () {
+  function ShowInfo(trigger) {
+    _classCallCheck(this, ShowInfo);
+
+    this.trigger = document.querySelectorAll(trigger);
+  }
+
+  _createClass(ShowInfo, [{
+    key: "triggersInit",
+    value: function triggersInit() {
+      this.trigger.forEach(function (item) {
+        item.addEventListener('click', function () {
+          if (getComputedStyle(item.nextElementSibling).display === 'none') {
+            item.nextElementSibling.classList.add('animate__animated', 'animate__fadeIn');
+            item.nextElementSibling.style.display = 'block';
+          } else {
+            item.nextElementSibling.style.display = 'none';
+          }
+        });
+      });
+    }
+  }]);
+
+  return ShowInfo;
 }();
 
 

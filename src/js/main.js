@@ -7,6 +7,7 @@ import Forms from './modules/form/form';
 import CheckInputCyrilic from './modules/form/checkInputCyrilic';
 import NumberMask from './modules/form/numberMask';
 import MainPrevNext from './modules/slider/slider-mainPrevNext';
+import ShowInfo from './modules/showInfo';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({
@@ -70,4 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const numberMask = new NumberMask('input[name="phone"]');
     numberMask.init();
+
+    const showInfo = new ShowInfo('.module__info-show');
+    showInfo.triggersInit();
 });
