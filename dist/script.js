@@ -5083,6 +5083,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_form_numberMask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/form/numberMask */ "./src/js/modules/form/numberMask.js");
 /* harmony import */ var _modules_slider_slider_mainPrevNext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/slider/slider-mainPrevNext */ "./src/js/modules/slider/slider-mainPrevNext.js");
 /* harmony import */ var _modules_showInfo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/showInfo */ "./src/js/modules/showInfo.js");
+/* harmony import */ var _modules_donwload__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/donwload */ "./src/js/modules/donwload.js");
+
 
 
 
@@ -5147,6 +5149,7 @@ window.addEventListener('DOMContentLoaded', function () {
   numberMask.init();
   var showInfo = new _modules_showInfo__WEBPACK_IMPORTED_MODULE_8__["default"]('.module__info-show');
   showInfo.triggersInit();
+  new _modules_donwload__WEBPACK_IMPORTED_MODULE_9__["default"]('.download').init();
 });
 
 /***/ }),
@@ -5223,6 +5226,73 @@ function () {
   }]);
 
   return Differnce;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/modules/donwload.js":
+/*!************************************!*\
+  !*** ./src/js/modules/donwload.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Download; });
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Download =
+/*#__PURE__*/
+function () {
+  function Download(triggers) {
+    _classCallCheck(this, Download);
+
+    this.triggers = document.querySelectorAll(triggers);
+    this.path = 'assets/img/mainbg.jpg';
+  }
+
+  _createClass(Download, [{
+    key: "donwloadItem",
+    value: function donwloadItem(path) {
+      var elem = document.createElement('a');
+      elem.setAttribute('href', path);
+      elem.setAttribute('download', 'nice_picture');
+      elem.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+      elem.style.display = 'none';
+      document.body.appendChild(elem);
+      elem.click();
+      history.pushState('', document.title, window.location.pathname);
+      document.body.removeChild(elem);
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var _this = this;
+
+      this.triggers.forEach(function (item) {
+        item.addEventListener('click', function () {
+          _this.donwloadItem(_this.path);
+        });
+      });
+    }
+  }]);
+
+  return Download;
 }();
 
 
@@ -5686,7 +5756,7 @@ function () {
       this.trigger.forEach(function (item) {
         item.addEventListener('click', function () {
           if (getComputedStyle(item.nextElementSibling).display === 'none') {
-            item.nextElementSibling.classList.add('animate__animated', 'animate__fadeIn');
+            item.nextElementSibling.classList.add('animate__animated', 'animate__flipInX');
             item.nextElementSibling.style.display = 'block';
           } else {
             item.nextElementSibling.style.display = 'none';

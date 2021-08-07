@@ -9,7 +9,7 @@ export default class ShowInfo {
         this.trigger.forEach(item => {
             item.addEventListener('click', () => {
                 if(getComputedStyle(item.nextElementSibling).display === 'none') {
-                    item.nextElementSibling.classList.add('animate__animated', 'animate__fadeIn');
+                    item.nextElementSibling.classList.add('animate__animated', 'animate__flipInX');
                     item.nextElementSibling.style.display = 'block';
                 } else {
                     item.nextElementSibling.style.display = 'none';

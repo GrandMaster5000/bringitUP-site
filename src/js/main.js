@@ -8,6 +8,7 @@ import CheckInputCyrilic from './modules/form/checkInputCyrilic';
 import NumberMask from './modules/form/numberMask';
 import MainPrevNext from './modules/slider/slider-mainPrevNext';
 import ShowInfo from './modules/showInfo';
+import Download from './modules/donwload';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({
@@ -74,4 +75,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const showInfo = new ShowInfo('.module__info-show');
     showInfo.triggersInit();
+
+    new Download('.download').init();
 });
