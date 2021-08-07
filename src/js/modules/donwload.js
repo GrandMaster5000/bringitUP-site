@@ -11,9 +11,6 @@ export default class Download {
         elem.setAttribute('href', path);
         elem.setAttribute('download', 'nice_picture');
         
-        elem.addEventListener('click', e => {
-            e.stopPropagation();
-        });
         elem.style.display = 'none';
         document.body.appendChild(elem);
 
